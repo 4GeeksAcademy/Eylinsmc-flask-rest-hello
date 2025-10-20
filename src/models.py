@@ -60,8 +60,8 @@ class Comment(db.Model):
 
 class Follower(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True)
-    user_from_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)
-    user_to_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False)
+    user_from_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False) # Following
+    user_to_id: Mapped[int] = mapped_column(ForeignKey("user.id"), nullable=False) # Follower
 
     user_from = relationship("User", foreign_keys=[user_from_id], backref="following")
     user_to = relationship("User", foreign_keys=[user_to_id], backref="followers")
